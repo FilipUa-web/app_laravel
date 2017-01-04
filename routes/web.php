@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/home', 'HomeController@index');
+
 
 
 
@@ -26,8 +24,12 @@ Route::get('/admin',function (){
     return view('admin.index');
 });
 
-Route::group(['middleware' => 'admin'], function (){
+//Route::group(['middleware' => 'admin'], function (){
     Route::resource('admin/users', 'AdminUsersController');
-});
+//});
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

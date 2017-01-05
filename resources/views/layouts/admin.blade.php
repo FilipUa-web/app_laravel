@@ -24,6 +24,10 @@
 
         <p><a href="{{url('admin/users')}}">All users</a></p>
         <p><a href="{{url('admin/users/create')}}">Create user</a></p>
+        <p><a href="{{url('admin/posts')}}">All Posts</a></p>
+        <p><a href="{{url('admin/posts/create')}}">Create Post</a></p>
+
+
     </div>
     <div class="col-xs-11 col-md-7">@yield('content')</div>
     <div class="col-xs-1 col-md-1"></div>

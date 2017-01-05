@@ -14,9 +14,10 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>Photo</th>
             <th>Owner</th>
             <th>Category</th>
-            <th>Photo</th>
+
             <th>Title</th>
             <th>body</th>
             <th>Created</th>
@@ -31,9 +32,9 @@
 
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td>{{$post->user->name}}</td>
-                    <td>{{$post->category_id}}</td>
-                    <td>{{$post->photo_id}}</td>
+                    <td><img height="30" width="30" src="http://localhost:82/app/public{{$post->photo ? $post->photo->file : '/images/default.jpg'}}" class="img-responsive img-rounded"></td>
+                    <td><a href="{{url('admin/posts', $post->id)}}/edit">{{$post->user->name}}</a></td>
+                    <td>{{$post->category ? $post->category->name : 'Uncategorized' }}</td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->body}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>

@@ -26,6 +26,7 @@
         <p><a href="{{url('admin/users/create')}}">Create user</a></p>
         <p><a href="{{url('admin/posts')}}">All Posts</a></p>
         <p><a href="{{url('admin/posts/create')}}">Create Post</a></p>
+        <p><a href="{{url('admin/categories')}}">All Categories</a></p>
 
 
     </div>

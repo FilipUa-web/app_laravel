@@ -10,7 +10,7 @@
     <title>Admin</title>
 
     <!-- Styles -->
-
+    @yield('styles')
     <link href="/app/public/css/app.css" rel="stylesheet">
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -27,6 +27,8 @@
         <p><a href="{{url('admin/posts')}}">All Posts</a></p>
         <p><a href="{{url('admin/posts/create')}}">Create Post</a></p>
         <p><a href="{{url('admin/categories')}}">All Categories</a></p>
+        <p><a href="{{url('admin/media')}}">All Media</a></p>
+        <p><a href="{{url('admin/media/create')}}">Upload Media</a></p>
 
 
     </div>
@@ -34,7 +36,7 @@
     <div class="col-xs-1 col-md-1"></div>
 </div>
 
-    @yield('footer')
+    @yield('scripts')
 
 
 <!-- Scripts -->

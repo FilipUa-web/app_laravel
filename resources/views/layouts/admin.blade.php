@@ -13,7 +13,10 @@
     @yield('styles')
     <link href="http://bootstrap-3.ru/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="{{url('css/blog-post.css'}}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body{margin-top:50px;}

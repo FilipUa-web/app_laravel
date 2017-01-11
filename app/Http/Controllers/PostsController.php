@@ -14,10 +14,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Post::all();
+        $posts = Post::all();
         //$categories = Category::pluck('name','id')->all();
 
-        return view('main.posts.index', compact('post'));
+        return view('main.posts.index', compact('posts'));
     }
 
     /**

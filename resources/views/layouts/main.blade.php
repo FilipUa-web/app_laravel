@@ -26,6 +26,12 @@
 
 </head>
 
+
+
+<style>
+
+</style>
+
 <body>
 
 <!-- Navigation -->
@@ -72,14 +78,17 @@
         <!-- Blog Post Content Column -->
         <div class="col-lg-8">
 
-            <!-- Blog Post -->
 
+
+
+            <!-- Blog Post -->
+                 @yield('content')
             <!-- Title -->
 
             <hr>
 
             <!-- Blog Comments -->
-        @yield('content')
+
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>

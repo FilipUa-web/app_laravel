@@ -26,7 +26,8 @@ Route::get('/admin',function (){
     Route::resource('admin/media', 'AdminMediaController');
 //});
 
-Route::get('post/{post}', 'PostsController@show');
+Route::get('/post/{post}', 'PostsController@show');
+Route::get('/posts', 'PostsController@index');
 
 Auth::routes();
 

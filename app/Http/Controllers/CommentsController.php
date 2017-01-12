@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use PhpParser\Comment;
 use App\Comments;
@@ -34,7 +35,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , $post_id)
+    public function store(CommentRequest $request , $post_id)
     {
         $comment = new Comments();
         $comment->name = $request->name;

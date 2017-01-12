@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comments;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        //$categories = Category::pluck('name','id')->all();
-
         return view('main.posts.index', compact('posts'));
     }
 

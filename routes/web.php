@@ -29,6 +29,8 @@ Route::get('/admin',function (){
 Route::get('/post/{post}', 'PostsController@show');
 Route::get('/posts', 'PostsController@index');
 
+Route::post('comments/{post_id}', 'CommentsController@store' );
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

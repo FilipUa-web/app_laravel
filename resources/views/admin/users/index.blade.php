@@ -5,7 +5,7 @@
 
 
     @if(Session::has('deleted_user'))
-        <p>{{session('deleted_user')}}</p>
+        <p class="bg-success" style="padding: 15px">{{session('deleted_user')}}</p>
     @endif
 
 

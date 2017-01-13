@@ -19,13 +19,15 @@ Route::get('/admin',function (){
     return view('admin.index');
 });
 
-//Route::group(['middleware' => 'admin'], function (){
+Route::group(['middleware' => 'admin'], function (){
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/media', 'AdminMediaController');
     Route::resource('admin/comments', 'AdminCommentsController');
-//});
+});
+
+
 
 Route::get('/post/{post}', 'PostsController@show');
 Route::get('/posts', 'PostsController@index');
@@ -33,5 +35,6 @@ Route::get('/posts', 'PostsController@index');
 Route::post('comments/{post_id}', 'CommentsController@store' );
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index');

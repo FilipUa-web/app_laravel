@@ -24,6 +24,9 @@
         .panel-body { padding:0px; }
         .panel-body table tr td { padding-left: 15px }
         .panel-body .table {margin-bottom: 0px; }
+        .dropdown-menu {min-width: 87px; text-align: center; }
+        .btn-group {margin: 10px 10px 0 15px}
+        .avatar {margin: 10px 10px 0 10px ; height: 30px; width: 40px;}
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -41,21 +44,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://bootstrap-3.ru/examples/dashboard/#">Project name</a>
+            <a class="navbar-brand" href="{{url('/')}}"><span class="glyphicon glyphicon-home"></span> Home</a>
+
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://bootstrap-3.ru/examples/dashboard/#">Dashboard</a></li>
-                <li><a href="http://bootstrap-3.ru/examples/dashboard/#">Settings</a></li>
-                <li><a href="http://bootstrap-3.ru/examples/dashboard/#">Profile</a></li>
-                <li><a href="http://bootstrap-3.ru/examples/dashboard/#">Help</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+        <div>
+
+                <div class="btn-group navbar-right">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a href="{{url('/logout')}}">Logout</a>
+                    </ul>
+                </div>
+            <img src="{{url(Auth::user()->photo->file)}}" class="img-circle navbar-right avatar">
         </div>
     </div>
 </div>
+
 
 <div class="container">
             <div class="row">

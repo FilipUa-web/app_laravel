@@ -24,6 +24,7 @@ Route::get('/admin',function (){
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/media', 'AdminMediaController');
+    Route::resource('admin/comments', 'AdminCommentsController');
 //});
 
 Route::get('/post/{post}', 'PostsController@show');

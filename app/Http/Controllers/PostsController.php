@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comments;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -28,8 +29,9 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findorFail($id);
-
-        return view('main.posts.post', compact('post'));
+        $check = Auth::check();
+        
+        return view('main.posts.post', compact('post','check'));
     }
 
 }

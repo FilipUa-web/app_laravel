@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentRequest;
+use App\Comments;
 use Illuminate\Http\Request;
 use PhpParser\Comment;
-use App\Comments;
 
-class CommentsController extends Controller
+class AdminCommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comments::all();
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -35,20 +35,9 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CommentRequest $request , $post_id)
+    public function store(Request $request)
     {
-//        $comment = new Comments();
-//        $comment->name = $request->name;
-//        $comment->email = $request->email;
-//        $comment->comment = $request->comment;
-//        $comment->post_id = $post_id;
-//        $comment->save();
-
-        $input = $request->all();
-        $input['post_id'] = $post_id;
-        Comments::create($input);
-        return redirect('post/'.$post_id);
-
+        //
     }
 
     /**
@@ -70,7 +59,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comments::findOrFail($id);
+        return view('admin.comments.edit', compact('comment'));
     }
 
     /**
@@ -82,7 +72,8 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comments::findOrFail($id)->update($request->all());
+        return redirect('/admin/comments');
     }
 
     /**
@@ -93,6 +84,8 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comments::findOrFail($id)->delete();
+        //Session::flash('deleted_category', 'The category has been deleted');
+        return redirect('admin/comments');
     }
 }

@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <h1>{{$post->title}}</h1>
 
     <!-- Author -->
@@ -58,18 +57,32 @@
     {!! Form::open(['method'=>'POST', 'action'=> ['CommentsController@store',$post->id]]) !!}
 
     <div class="row">
+        @if(!$check)
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
-                {!! Form::text('name', null, ['class'=> 'form-control']) !!}
+                {!! Form::text('name', null, ['class'=> 'form-control' ]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('email', 'Email:') !!}
-                {!! Form::text('email', null, ['class'=> 'form-control']) !!}
+                {!! Form::text('email', null, ['class'=> 'form-control' , 'hidden']) !!}
             </div>
         </div>
+        @endif
+        @if($check)
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {!! Form::hidden('name', Auth::user()->name, ['class'=> 'form-control' ]) !!}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {!! Form::hidden('email', Auth::user()->email, ['class'=> 'form-control']) !!}
+                    </div>
+                </div>
+        @endif
         <div class="col-lg-12">
             <div class="form-group">
                 {!! Form::label('comment', 'Comment:') !!}

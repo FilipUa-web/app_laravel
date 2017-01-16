@@ -33,7 +33,7 @@
 
             <tr>
                 <td>{{$user->id}}</td>
-                <td><img height="30" width="30" src="http://localhost:82/app/public{{$user->photo ? $user->photo->file : '/images/default.jpg'}}" class="img-responsive img-rounded"></td>
+                <td><img height="30" width="30" src="{{url($user->photo ? $user->photo->file : '/images/default.jpg')}}" class="img-responsive img-rounded"></td>
                 <td><a href="{{url('admin/users', $user->id)}}/edit">{{$user->name}}</a></td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->role_id == null ? 'User has no role' : $user->role->name }}</td>

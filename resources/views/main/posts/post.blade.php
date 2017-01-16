@@ -32,7 +32,7 @@
         <!-- Posted Comments -->
     <div class="media">
         <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
+            <img height="40" width="40" class="media-object" src="{{url($comment->photo ? $comment->photo->file : '/images/default.jpg')}}" alt="">
         </a>
         <div class="media-body">
             <h4 class="media-heading">{{$comment->name}}
@@ -51,7 +51,6 @@
 
     <hr>
 
-
     <!-- Comments Form -->
 
     {!! Form::open(['method'=>'POST', 'action'=> ['CommentsController@store',$post->id]]) !!}
@@ -67,7 +66,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('email', 'Email:') !!}
-                {!! Form::text('email', null, ['class'=> 'form-control' , 'hidden']) !!}
+                {!! Form::text('email', null, ['class'=> 'form-control' ]) !!}
             </div>
         </div>
         @endif
@@ -80,6 +79,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         {!! Form::hidden('email', Auth::user()->email, ['class'=> 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        {!! Form::hidden('photo_id', Auth::user()->photo_id, ['class'=> 'form-control']) !!}
                     </div>
                 </div>
         @endif

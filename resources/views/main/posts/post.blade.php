@@ -81,11 +81,10 @@
                         {!! Form::hidden('email', Auth::user()->email, ['class'=> 'form-control']) !!}
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
+
                         {!! Form::hidden('photo_id', Auth::user()->photo_id, ['class'=> 'form-control']) !!}
-                    </div>
-                </div>
+
+
         @endif
         <div class="col-lg-12">
             <div class="form-group">

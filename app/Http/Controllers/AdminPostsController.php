@@ -81,8 +81,8 @@ class AdminPostsController extends Controller
     {
         $post = Post::findorFail($id);
         $categories = Category::pluck('name','id')->all();
-
-        return view('admin.post.edit', compact('post','categories'));
+        $medias = Photo::all();
+        return view('admin.post.edit', compact('post','categories','medias'));
     }
 
     /**

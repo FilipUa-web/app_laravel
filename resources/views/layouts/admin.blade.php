@@ -19,6 +19,15 @@
     <link href="{{url('css/blog-post.css')}}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
+        .modal-dialog {
+            width: 90%;
+            height: 90%;
+            padding: 0;
+            margin-left: auto;
+        }
+        a.popup:hover{
+            padding: 15px;
+        }
         body{margin-top:50px;}
         .glyphicon { margin-right:10px; }
         .panel-body { padding:0px; }
@@ -57,7 +66,7 @@
                         <a href="{{url('/logout')}}">Logout</a>
                     </ul>
                 </div>
-            <img src="{{url(Auth::user()->photo->file)}}" class="img-circle navbar-right avatar">
+            <img src="{{Auth::user()->photo ? url(Auth::user()->photo->file) : url('images/default')  }}" class="img-circle navbar-right avatar">
         </div>
     </div>
 </div>

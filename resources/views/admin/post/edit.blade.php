@@ -24,7 +24,18 @@
 
     <div class="form-group">
         {!! Form::label('photo_id', 'Photo:') !!}
-        {!! Form::file('photo_id', null, ['class'=> 'form-control']) !!}
+        <div class="row">
+            <div class="col-lg-6">
+                {!! Form::hidden('photo_id', null, ['id'=> 'photo_id']) !!}
+                {!! Form::file('photo_id', null, ['class'=> 'form-control']) !!}
+            </div>
+            <div class="col-lg-6">
+
+                <a href="#" data-toggle="modal" data-target=".pop-up-1" class="btn btn-default">Upload from server</a>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="form-group">
@@ -46,4 +57,16 @@
 
     {!! Form::close() !!}
 
+    @include('includes.popup')
+
+
+@stop
+
+@section('scripts')
+
+    <script>
+        $( "img" ).click(function() {
+            $("input#photo_id").val($(this).attr('id'));
+        });
+    </script>
 @stop

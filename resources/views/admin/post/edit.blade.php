@@ -62,11 +62,3 @@
 
 @stop
 
-@section('scripts')
-
-    <script>
-        $( "img" ).click(function() {
-            $("input#photo_id").val($(this).attr('id'));
-        });
-    </script>
-@stop

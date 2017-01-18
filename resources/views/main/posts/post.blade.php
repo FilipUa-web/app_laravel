@@ -32,7 +32,7 @@
         <!-- Posted Comments -->
     <div class="media">
         <a class="pull-left" href="#">
-            <img height="40" width="40" class="media-object" src="{{url($comment->photo ? $comment->photo->file : '/images/default.jpg')}}" alt="">
+            <img class="img-circle" height="40" width="40" class="media-object" src="{{url($comment->photo ? $comment->photo->file : '/images/default.jpg')}}" alt="">
         </a>
         <div class="media-body">
             <h4 class="media-heading">{{$comment->name}}

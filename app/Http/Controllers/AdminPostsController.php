@@ -32,7 +32,8 @@ class AdminPostsController extends Controller
     public function create()
     {
         $categories = Category::pluck('name','id')->all();
-        return view('admin.post.create', compact('categories'));
+        $medias = Photo::all();
+        return view('admin.post.create', compact('categories','medias'));
     }
 
     /**

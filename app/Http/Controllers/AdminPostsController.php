@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostsCreateRequest;
 use App\Photo;
 use App\Post;
+use App\Tag;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
@@ -33,7 +34,8 @@ class AdminPostsController extends Controller
     {
         $categories = Category::pluck('name','id')->all();
         $medias = Photo::all();
-        return view('admin.post.create', compact('categories','medias'));
+        $tags = Tag::all();
+        return view('admin.post.create', compact('categories','medias','tags'));
     }
 
     /**
@@ -45,7 +47,6 @@ class AdminPostsController extends Controller
     public function store(PostsCreateRequest $request)
     {
         $input = $request->all();
-
         $user = Auth::user();
 
         if($file = $request->file('photo_id')){
@@ -56,7 +57,8 @@ class AdminPostsController extends Controller
         }
 
         $user->posts()->create($input);
-
+        $post = Post::all()->last();
+        $post->tags()->sync($request->tags);
 
         return redirect('/admin/posts');
 
@@ -83,7 +85,9 @@ class AdminPostsController extends Controller
         $post = Post::findorFail($id);
         $categories = Category::pluck('name','id')->all();
         $medias = Photo::all();
-        return view('admin.post.edit', compact('post','categories','medias'));
+        $tags = Tag::pluck('name','id')->all();
+
+        return view('admin.post.edit', compact('post','categories','medias','tags'));
     }
 
     /**
@@ -104,7 +108,11 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
+
         Auth::user()->posts()->whereId($id)->first()->update($input);
+
+        $post = Post::whereId($id)->first();
+        $post->tags()->sync($request->tags);
         return redirect('/admin/posts') ;
     }
 
@@ -117,13 +125,8 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-
-        unlink(public_path()  . $post->photo->file);
-
         $post->delete();
-
         Session::flash('deleted_post', 'The post has been deleted');
-
         return redirect('/admin/posts');
     }
 }

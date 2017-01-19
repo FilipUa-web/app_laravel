@@ -18,10 +18,14 @@
     <img height="400" width="400" src="http://localhost:82/app/public{{$post->photo ? $post->photo->file : '/images/default.jpg'}}" class="img-responsive img-rounded">
 
     <hr>
-
     <!-- Post Content -->
     <p>{{$post->body}}</p>
 
+    <div class="tags">Tags :
+        @foreach($post->tags as $tag)
+            <span class="label label-default">{{$tag->name}}</span>
+        @endforeach
+    </div>
 
 
 

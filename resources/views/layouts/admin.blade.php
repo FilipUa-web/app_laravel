@@ -17,6 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="{{url('css/blog-post.css')}}" rel="stylesheet">
+    <link href="{{url('css/select2.min.css')}}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .modal-dialog {
@@ -39,6 +40,7 @@
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="{{url('js/select2.min.js')}}"></script>
 
 
 </head>

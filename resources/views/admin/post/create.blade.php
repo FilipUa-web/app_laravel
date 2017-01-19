@@ -3,6 +3,8 @@
 
 @section('content')
 
+
+
     <h1>Create Post</h1>
 
     {!! Form::open(['method'=>'POST', 'action'=> 'AdminPostsController@store', 'enctype'=>'multipart/form-data']) !!}
@@ -16,6 +18,15 @@
         {!! Form::label('category_id', 'Category:') !!}
         {!! Form::select('category_id',array(''=>'Chose Category') + $categories , null, ['class'=> 'form-control']) !!}
     </div>
+    {!! Form::label('tags', 'Tags:') !!}
+    <div class="form-group">
+        <select class="form-control select2-multi" name="tags[]"  multiple="multiple">
+            @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
 
     <div class="form-group">
         {!! Form::label('photo_id', 'Photo:') !!}
@@ -29,8 +40,6 @@
                 <a href="#" data-toggle="modal" data-target=".pop-up-1" class="btn btn-default">Upload from server</a>
             </div>
         </div>
-
-
     </div>
 
     <div class="form-group">
@@ -44,7 +53,9 @@
 
     {!! Form::close() !!}
 
-
+    <script type="text/javascript">
+        $(".select2-multi").select2();
+    </script>
 
     @include('includes.popup')
     @include('includes.validation')
@@ -52,3 +63,8 @@
 
 
 @stop
+
+
+
+
+

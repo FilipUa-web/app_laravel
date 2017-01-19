@@ -23,6 +23,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('tags', 'Tags:') !!}
+        {!! Form::select('tags[]',$tags, null, ['class'=> 'form-control select2-multi', 'multiple'=>'multiple']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('photo_id', 'Photo:') !!}
         <div class="row">
             <div class="col-lg-6">
@@ -57,6 +62,11 @@
 
     {!! Form::close() !!}
 
+
+    <script type="text/javascript">
+        $(".select2-multi").select2();
+        $(".select2-multi").select2().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('change');
+    </script>
     @include('includes.popup')
 
 

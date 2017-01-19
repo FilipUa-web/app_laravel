@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comments;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
+
+
         return view('main.posts.index', compact('posts'));
     }
 
@@ -30,7 +33,6 @@ class PostsController extends Controller
     {
         $post = Post::findorFail($id);
         $check = Auth::check();
-        
         return view('main.posts.post', compact('post','check'));
     }
 

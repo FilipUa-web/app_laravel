@@ -19,6 +19,7 @@
                         <p>{{$post->body}}</p>
                     </div>
                 </div>
+
                 <div style="float: right;">Published at : {{$post->created_at}} </div>
             </div>
 

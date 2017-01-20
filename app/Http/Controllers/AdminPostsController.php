@@ -59,7 +59,6 @@ class AdminPostsController extends Controller
         $user->posts()->create($input);
         $post = Post::all()->last();
         $post->tags()->sync($request->tags);
-
         return redirect('/admin/posts');
 
     }

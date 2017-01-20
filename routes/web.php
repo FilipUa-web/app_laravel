@@ -33,6 +33,8 @@ Route::group(['middleware' => 'admin'], function (){
 Route::get('/post/{post}', 'PostsController@show');
 Route::get('/posts', 'PostsController@index');
 
+Route::get('/posts/category/{category}', 'PostsController@show_category');
+
 Route::post('comments/{post_id}', 'CommentsController@store' );
 
 Auth::routes();

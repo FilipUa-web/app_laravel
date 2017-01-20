@@ -11,7 +11,6 @@ class AdminMediaController extends Controller
     public function index(){
 
         $photos = Photo::all();
-
         return view('admin.media.index' , compact('photos'));
     }
 
@@ -23,25 +22,16 @@ class AdminMediaController extends Controller
     public function store(Request $request){
 
         $file = $request->file('file');
-
         $name = time() . $file->getClientOriginalName();
-
         $file->move('images' , $name);
-
         Photo::create(['file'=>$name]);
-        
-
     }
 
     public function destroy($id){
 
-
         $photo = Photo::findOrfail($id);
-
         unlink(public_path()  . $photo->file);
-
         $photo->delete();
-
         Session::flash('deleted_media', 'The image has been deleted');
         return redirect('admin/media');
     }

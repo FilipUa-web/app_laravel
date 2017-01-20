@@ -38,13 +38,6 @@ class CommentsController extends Controller
      */
     public function store(CommentRequest $request , $post_id)
     {
-//        $comment = new Comments();
-//        $comment->name = $request->name;
-//        $comment->email = $request->email;
-//        $comment->comment = $request->comment;
-//        $comment->post_id = $post_id;
-//        $comment->save();
-
         $input = $request->all();
         $input['post_id'] = $post_id;
         Comments::create($input);

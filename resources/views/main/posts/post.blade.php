@@ -32,26 +32,28 @@
 
 
     <hr>
-    @foreach($post->comments as $comment)
-        <!-- Posted Comments -->
-    <div class="media">
-        <a class="pull-left" href="#">
-            <img class="img-circle" height="40" width="40" class="media-object" src="{{url($comment->photo ? $comment->photo->file : '/images/default.jpg')}}" alt="">
-        </a>
-        <div class="media-body">
-            <h4 class="media-heading">{{$comment->name}}
-                <small>{{$comment->created_at}}</small>
-            </h4>
-            {{$comment->comment}}
+    @if($post->comments)
+        @foreach($post->comments as $comment)
+            <!-- Posted Comments -->
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="img-circle" height="40" width="40" class="media-object" src="{{url($comment->user ? $comment->user->photo->file : '/images/default.jpg')}}" alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{$comment->name}}
+                    <small>{{$comment->created_at}}</small>
+                </h4>
+                {{$comment->comment}}
+            </div>
         </div>
-    </div>
-            <!-- Blog Comments -->
+                <!-- Blog Comments -->
 
 
-        <!-- Comment -->
+            <!-- Comment -->
 
 
-    @endforeach
+        @endforeach
+    @endif
 
     <hr>
 
@@ -86,7 +88,7 @@
                     </div>
                 </div>
 
-                        {!! Form::hidden('photo_id', Auth::user()->photo_id, ['class'=> 'form-control']) !!}
+                        {!! Form::hidden('user_id', Auth::user()->id, ['class'=> 'form-control']) !!}
 
 
         @endif

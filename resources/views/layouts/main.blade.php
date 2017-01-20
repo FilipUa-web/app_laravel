@@ -108,36 +108,22 @@
             </div>
 
             <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Blog Categories</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
+
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                @if($categories)
+                                    @foreach($categories as $category)
+                                        <li><a href="{{url('posts/category',$category->id)}}">{{$category->name}}</a></li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
-            </div>
 
             <!-- Side Widget Well -->
             <div class="well">
